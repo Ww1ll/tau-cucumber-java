@@ -1,12 +1,22 @@
 package com.tau.steps;
 
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+@RunWith(Cucumber.class)
+@CucumberOptions(
+        features = "src/test/resources",
+        glue = "com.tau.steps"
+)
 public class Steps {
 
     private WebDriver driver;
@@ -30,7 +40,8 @@ public class Steps {
     @Then("I should be taken to the Overview Page")
     public void i_should_be_taken_to_the_overview_page() {
 
-        //Thread.sleep(5000);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\rightPanel\"]/div/div/h1")));
 
         driver.findElement(By.xpath("//*[@id=\rightPanel\"]/div/div/h1")).isDisplayed();
         driver.findElement(By.linkText("Log out")).click();
