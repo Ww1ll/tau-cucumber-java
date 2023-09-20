@@ -8,7 +8,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Before;
-import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,11 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.Assert.assertTrue;
 
-@RunWith(Cucumber.class)
-@CucumberOptions(
-        features = "src/test/resources",
-        glue = "com.tau.steps"
-)
+
 public class Steps extends BaseUtil {
 
     private BaseUtil baseUtil;
