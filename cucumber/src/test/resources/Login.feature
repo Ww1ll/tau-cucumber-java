@@ -4,8 +4,13 @@ Feature: Login Functionality
   As a valid Para Bank customer
   I want to login succesfully
 
-Scenario: Login Sucessfull
+Scenario Outline: Login Sucessfull
 
 Given I am in the login page of the Para Bank Application
-When I enter valid credentials
+When I enter valid <username> and <password> with <userFullName>
 Then I should be taken to the Overview Page
+
+Examples:
+  | username     | password   | userFullName |
+  | "autotester" | "password" | Auto Tester  |
+  | "tautester"  | "password" | TAU Tester   |
